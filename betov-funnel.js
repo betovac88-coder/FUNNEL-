@@ -361,16 +361,16 @@ function ytThumb(u){
 
 /* ── EDITOR TEXTOS ── */
 function openTextEditor(){
-  document.getElementById('te-badge').value=document.getElementById('edit-badge').innerText.trim();
-  document.getElementById('te-l1').value=document.getElementById('h1-l1').innerText.trim();
-  document.getElementById('te-l2').value=document.getElementById('h1-l2').innerText.trim();
-  document.getElementById('te-l3').value=document.getElementById('h1-l3').innerText.trim();
-  document.getElementById('te-sub').value=document.getElementById('edit-sub').innerText.trim();
-  document.getElementById('te-proof').value=document.getElementById('edit-proof').innerText.trim();
-  document.getElementById('te-cta-btn').value=document.getElementById('edit-cta-text').innerText.trim();
-  document.getElementById('te-cta-p').value=document.getElementById('edit-cta-p').innerText.trim();
-  // Pre-cargar Calendly guardado
-  try{const c=localStorage.getItem('betovCalendly');if(c) document.getElementById('te-calendly').value=c;}catch(e){}
+  const get = id => { const el = document.getElementById(id); return el ? el.innerText.trim() : ''; };
+  document.getElementById('te-badge').value = get('edit-badge');
+  document.getElementById('te-l1').value = get('h1-l1');
+  document.getElementById('te-l2').value = get('h1-l2');
+  document.getElementById('te-l3').value = get('h1-l3');
+  document.getElementById('te-sub').value = get('edit-sub');
+  const teProof = document.getElementById('te-proof'); if(teProof) teProof.value = get('edit-proof');
+  const teCtaBtn = document.getElementById('te-cta-btn'); if(teCtaBtn) teCtaBtn.value = get('edit-cta-text');
+  const teCtaP = document.getElementById('te-cta-p'); if(teCtaP) teCtaP.value = get('edit-cta-p');
+  try{ const c=localStorage.getItem('betovCalendly'); if(c){ const el=document.getElementById('te-calendly'); if(el) el.value=c; } }catch(e){}
   document.getElementById('textEditorPanel').classList.add('open');
 }
 function closeTextEditor(){document.getElementById('textEditorPanel').classList.remove('open')}
