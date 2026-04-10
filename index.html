@@ -1221,8 +1221,12 @@ body.edit-mode .edit-mode-badge{display:block}
 </div>
 
 <script>
-'use strict';
-'use strict';
+/* ── HELPER ── */
+function setEl(id, val) {
+  const el = document.getElementById(id);
+  if (el && val) el.textContent = val;
+}
+
 
 /* ══════════════════════════════════════
    PERSISTENCIA — localStorage
